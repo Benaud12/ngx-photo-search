@@ -6,6 +6,7 @@ import {
 } from '@angular/common/http/testing';
 import { Photo } from './photo.model';
 import { PhotoService } from './photo.service';
+import { environment } from '../../../environments/environment';
 
 describe('PhotoService', () => {
   let service: PhotoService;
@@ -36,7 +37,7 @@ describe('PhotoService', () => {
       });
 
       const req: TestRequest =
-        httpMock.expectOne('http://jsonplaceholder.typicode.com/photos');
+        httpMock.expectOne(`${environment.photoServiceEndpoint}/photos`);
       expect(req.request.method).toEqual('GET');
 
       req.flush(mockPhotos);
@@ -48,7 +49,7 @@ describe('PhotoService', () => {
         (err: any) => expect(err.status).toEqual(500));
 
       const req: TestRequest =
-        httpMock.expectOne('http://jsonplaceholder.typicode.com/photos');
+        httpMock.expectOne(`${environment.photoServiceEndpoint}/photos`);
 
       req.flush({}, { status: 500, statusText: 'Error' });
     });

@@ -1,0 +1,16 @@
+{
+  "expression": "photos",
+  "method": "GET",
+  "name": "photos",
+  "isArray": true,
+  "responses": {
+    "default-photos": {
+      "default": true,
+      "status": 200,
+      "headers": {
+        "content-type": "application/json"
+      },
+      "file": "mock_data/photos.json"
+    }
+  }
+}

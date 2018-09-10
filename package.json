@@ -9,7 +9,10 @@
     "test:no-watch": "ng test -c no-watch",
     "test:all": "npm run lint && npm run test:no-watch && npm run e2e",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "npm run e2e:mocked",
+    "e2e:mocked": "npm-run-all -p -r mocks e2e:ng",
+    "e2e:ng": "ng e2e",
+    "mocks": "node ./server.js"
   },
   "private": true,
   "dependencies": {
@@ -43,6 +46,8 @@
     "karma-coverage-istanbul-reporter": "~2.0.1",
     "karma-jasmine": "~1.1.2",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "ng-apimock": "^1.4.6",
+    "npm-run-all": "^4.1.3",
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
