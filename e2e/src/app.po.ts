@@ -5,7 +5,15 @@ export class AppPage {
     return browser.get('/');
   }
 
-  getParagraphText() {
+  clickButtonByText(text) {
+    return element(by.buttonText(text)).click();
+  }
+
+  getNumberOfPhotos() {
+    return element.all(by.css('.photo')).then(items => items.length);
+  }
+
+  getHeadingText() {
     return element(by.css('app-root h1')).getText();
   }
 }
