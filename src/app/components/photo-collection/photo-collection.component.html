@@ -1,0 +1,16 @@
+<div class="row">
+  <div
+    *ngFor="let photo of photos"
+    class="col-12 col-sm-6 col-md-4 col-lg-2 col-xl-1"
+    >
+    <figure
+      id="{{ photo.id }}"
+      class="photo figure">
+      <img
+        src="{{ photo.thumbnailUrl }}"
+        class="figure-img img-fluid rounded"
+        alt="{{ photo.title }}">
+      <figcaption class="figure-caption">{{ photo.title }}</figcaption>
+    </figure>
+  </div>
+</div>

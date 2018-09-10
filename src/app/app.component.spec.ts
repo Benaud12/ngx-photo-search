@@ -5,6 +5,7 @@ import {
   fakeAsync,
   tick
 } from '@angular/core/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { of, throwError } from 'rxjs';
 import { PhotoService } from './services/photo/photo.service';
 import { Photo } from './services/photo/photo.model';
@@ -26,6 +27,9 @@ describe('AppComponent', () => {
           provide: PhotoService,
           useValue: mockPhotoService
         }
+      ],
+      schemas: [
+        CUSTOM_ELEMENTS_SCHEMA
       ]
     }).compileComponents();
     fixture = TestBed.createComponent(AppComponent);

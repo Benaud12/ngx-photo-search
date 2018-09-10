@@ -4,10 +4,12 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { PhotoService } from './services/photo/photo.service';
+import { PhotoCollectionComponent } from './components/photo-collection/photo-collection.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PhotoCollectionComponent
   ],
   imports: [
     BrowserModule,
