@@ -37,10 +37,33 @@ export class AppComponent {
     return this.photos.slice(startIndex, endIndex);
   }
 
-  fetchPhotos(): void {
+  public fetchPhotos(): void {
     this.photoService.getAll().subscribe(
       photos => this._photos = photos,
       err => {}
     );
+  }
+
+  public nextPage(): void {
+    if (this.isLastPage()) {
+      return;
+    }
+    this._currentPage++;
+  }
+
+  public previousPage(): void {
+    if (this.currentPage === 1) {
+      return;
+    }
+    this._currentPage--;
+  }
+
+  private isLastPage(): boolean {
+    return this.currentPage === this.lastPage();
+  }
+
+  private lastPage(): number {
+    const additonal = (this.photos.length % this.photosPerPage) === 0 ? 0 : 1;
+    return Math.floor(this.photos.length / this.photosPerPage) + additonal;
   }
 }

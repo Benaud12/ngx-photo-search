@@ -143,4 +143,52 @@ describe('AppComponent', () => {
         expect(app.displayPhotos).toEqual(expectedPhotos);
       });
   });
+
+  describe('nextPage', () => {
+    it('shoud increment the currentPage by 1', () => {
+      spyOnProperty(app, 'photos', 'get').and.returnValue(mockPhotos);
+      spyOnProperty(app, 'photosPerPage', 'get').and.returnValue(2);
+      app.nextPage();
+      expect(app.currentPage).toEqual(2);
+      app.nextPage();
+      expect(app.currentPage).toEqual(3);
+    });
+
+    it('should not increment if already on last page (based on photos ' +
+      'and photosPerPage)', () => {
+        spyOnProperty(app, 'photos', 'get').and.returnValue(mockPhotos);
+        spyOnProperty(app, 'photosPerPage', 'get').and.returnValue(3);
+        app.nextPage();
+        app.nextPage();
+        app.nextPage();
+        expect(app.currentPage).toEqual(4);
+        app.nextPage();
+        expect(app.currentPage).toEqual(4);
+      });
+  });
+
+  describe('previousPage', () => {
+    it('shoud decrement the currentPage by 1', () => {
+      spyOnProperty(app, 'photos', 'get').and.returnValue(mockPhotos);
+      spyOnProperty(app, 'photosPerPage', 'get').and.returnValue(2);
+      app.nextPage();
+      app.nextPage();
+      expect(app.currentPage).toEqual(3);
+      app.previousPage();
+      expect(app.currentPage).toEqual(2);
+      app.previousPage();
+      expect(app.currentPage).toEqual(1);
+    });
+
+    it('should not decrement if on the first page', () => {
+        spyOnProperty(app, 'photos', 'get').and.returnValue(mockPhotos);
+        spyOnProperty(app, 'photosPerPage', 'get').and.returnValue(3);
+        app.nextPage();
+        expect(app.currentPage).toEqual(2);
+        app.previousPage();
+        expect(app.currentPage).toEqual(1);
+        app.previousPage();
+        expect(app.currentPage).toEqual(1);
+      });
+  });
 });
