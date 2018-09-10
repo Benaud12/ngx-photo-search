@@ -16,4 +16,8 @@ export class AppPage {
   getHeadingText() {
     return element(by.css('app-root h1')).getText();
   }
+
+  photoByIdIsPresent(photoId) {
+    return element(by.css(`app-photo-collection #${photoId}`)).isPresent();
+  }
 }

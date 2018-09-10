@@ -18,4 +18,20 @@ describe('workspace-project App', () => {
       page.clickButtonByText('Go');
       expect(page.getNumberOfPhotos()).toEqual(10);
     });
+
+  it('should navigate between pages', () => {
+    page.navigateTo();
+    page.clickButtonByText('Go');
+    expect(page.getNumberOfPhotos()).toEqual(10);
+    expect(page.photoByIdIsPresent('photo-10')).toBeTruthy();
+    expect(page.photoByIdIsPresent('photo-11')).toBeFalsy();
+    page.clickButtonByText('Next');
+    expect(page.getNumberOfPhotos()).toEqual(8);
+    expect(page.photoByIdIsPresent('photo-10')).toBeFalsy();
+    expect(page.photoByIdIsPresent('photo-11')).toBeTruthy();
+    page.clickButtonByText('Previous');
+    expect(page.getNumberOfPhotos()).toEqual(10);
+    expect(page.photoByIdIsPresent('photo-10')).toBeTruthy();
+    expect(page.photoByIdIsPresent('photo-11')).toBeFalsy();
+  });
 });

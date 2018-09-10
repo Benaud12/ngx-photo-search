@@ -4,11 +4,26 @@
   </h1>
 </div>
 
-<div class="main">
-  <h2>Click button to fetch photos:</h2>
-  <button (click)="fetchPhotos()">Go</button>
+<div class="container-fluid">
+  <div class="main">
+    <h2>Click button to fetch photos:</h2>
+    <button
+      class="btn btn-primary btn-lg btn-block"
+      (click)="fetchPhotos()"
+      >
+      Go
+    </button>
+  </div>
 </div>
 
-<div class=".container-fluid">
+<div class="container-fluid">
+  <app-pagination
+    (next)="nextPage()"
+    (previous)="previousPage()"
+    >
+  </app-pagination>
+</div>
+
+<div class="container-fluid">
   <app-photo-collection [photos]="displayPhotos"></app-photo-collection>
 </div>
