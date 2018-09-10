@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Photo } from './services/photo/photo.model';
+import { PhotoService } from './services/photo/photo.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ngx-photo-search';
+
+  private _photos: Photo[];
+
+  constructor(private photoService: PhotoService) {
+    this._photos = [];
+  }
+
+  get photos(): Photo[] {
+    return this._photos;
+  }
+
+  fetchPhotos(): void {
+    this.photoService.getAll().subscribe(
+      photos => this._photos = photos,
+      err => {}
+    );
+  }
 }
