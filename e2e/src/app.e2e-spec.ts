@@ -12,10 +12,10 @@ describe('workspace-project App', () => {
     expect(page.getHeadingText()).toEqual('Photo Search');
   });
 
-  it('should fetch and display all photos when you click the search button',
+  it('should display just 10 photos per page from the search by default',
     () => {
       page.navigateTo();
       page.clickButtonByText('Go');
-      expect(page.getNumberOfPhotos()).toEqual(20);
+      expect(page.getNumberOfPhotos()).toEqual(10);
     });
 });
