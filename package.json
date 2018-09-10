@@ -6,6 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
+    "test:no-watch": "ng test -c no-watch",
+    "test:all": "npm run lint && npm run test:no-watch && npm run e2e",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },

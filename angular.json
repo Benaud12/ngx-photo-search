@@ -83,6 +83,11 @@
               "src/favicon.ico",
               "src/assets"
             ]
+          },
+          "configurations": {
+            "no-watch": {
+              "watch": false
+            }
           }
         },
         "lint": {
