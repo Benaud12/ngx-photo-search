@@ -6,7 +6,11 @@ export class AppPage {
   }
 
   clickButtonByText(text) {
-    return element(by.buttonText(text)).click();
+    return this.getButtonByText(text).click();
+  }
+
+  getButtonByText(text) {
+    return element(by.buttonText(text));
   }
 
   getNumberOfPhotos() {
@@ -15,6 +19,10 @@ export class AppPage {
 
   getHeadingText() {
     return element(by.css('app-root h1')).getText();
+  }
+
+  getPaginationSummaryText() {
+    return element(by.css('app-pagination .summary')).getText();
   }
 
   photoByIdIsPresent(photoId) {

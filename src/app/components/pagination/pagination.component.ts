@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-pagination',
@@ -6,6 +6,21 @@ import { Component, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./pagination.component.scss']
 })
 export class PaginationComponent {
+  @Input()
+  public totalPhotos: number;
+
+  @Input()
+  public firstDisplayed: number;
+
+  @Input()
+  public lastDisplayed: number;
+
+  @Input()
+  public nextDisabled: boolean;
+
+  @Input()
+  public previousDisabled: boolean;
+
   @Output('next')
   public next: EventEmitter<void> = new EventEmitter();
 

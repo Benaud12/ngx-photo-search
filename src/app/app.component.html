@@ -6,9 +6,9 @@
 
 <div class="container-fluid">
   <div class="main">
-    <h2>Click button to fetch photos:</h2>
+    <h2>Click button to fetch photos</h2>
     <button
-      class="btn btn-primary btn-lg btn-block"
+      class="fetch-button btn btn-primary btn-lg btn-block"
       (click)="fetchPhotos()"
       >
       Go
@@ -18,6 +18,11 @@
 
 <div class="container-fluid">
   <app-pagination
+    [totalPhotos]="photos.length"
+    [firstDisplayed]="firstDisplayedPosition"
+    [lastDisplayed]="lastDisplayedPosition"
+    [nextDisabled]="lastDisplayedPosition === photos.length"
+    [previousDisabled]="currentPage === 1"
     (next)="nextPage()"
     (previous)="previousPage()"
     >

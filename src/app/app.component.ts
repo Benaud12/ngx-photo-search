@@ -37,6 +37,14 @@ export class AppComponent {
     return this.photos.slice(startIndex, endIndex);
   }
 
+  get firstDisplayedPosition(): number {
+    return this.photos.indexOf(this.displayPhotos[0]) + 1;
+  }
+
+  get lastDisplayedPosition(): number {
+    return this.photos.indexOf(this.displayPhotos.slice(-1)[0]) + 1;
+  }
+
   public fetchPhotos(): void {
     this.photoService.getAll().subscribe(
       photos => this._photos = photos,

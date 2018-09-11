@@ -191,4 +191,28 @@ describe('AppComponent', () => {
         expect(app.currentPage).toEqual(1);
       });
   });
+
+  describe('firstDisplayedIndex', () => {
+    it('should return the first displayedPhoto position in the photos array',
+      () => {
+        const displayedPhotos = [photo4, photo5, photo6];
+        spyOnProperty(app, 'photos', 'get').and.returnValue(mockPhotos);
+        spyOnProperty(app, 'displayPhotos', 'get')
+          .and.returnValue(displayedPhotos);
+
+        expect(app.firstDisplayedPosition).toEqual(4);
+      });
+  });
+
+  describe('lastDisplayedPosition', () => {
+    it('should return the last displayedPhoto position in the photos array',
+      () => {
+        const displayedPhotos = [photo4, photo5, photo6];
+        spyOnProperty(app, 'photos', 'get').and.returnValue(mockPhotos);
+        spyOnProperty(app, 'displayPhotos', 'get')
+          .and.returnValue(displayedPhotos);
+
+        expect(app.lastDisplayedPosition).toEqual(6);
+      });
+  });
 });
